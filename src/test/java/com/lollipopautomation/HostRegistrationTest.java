@@ -3,6 +3,9 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.lollipopautomation.Registration;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
@@ -12,6 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HostRegistrationTest {
     Registration registration = new Registration();
+    static WebDriver browser;
 
     @BeforeAll        public static void setUpAll() {
         Configuration.browserSize = "1280x800";
@@ -26,15 +30,25 @@ public class HostRegistrationTest {
 
     @Test
     public void register() throws Exception {
+        Thread.sleep(5000);
         registration.registrationBtn.click();
+        Thread.sleep(500);
         registration.fullNameInput.clear();
         registration.fullNameInput.click();
-        registration.fullNameInput.sendKeys("Test Automation");
+        Thread.sleep(500);
+        registration.fullNameInput.sendKeys("Host Auto");
+        Thread.sleep(500);
         registration.busNameInput.sendKeys("Autobots");
-        registration.emailInput.sendKeys("optimusprime@autobots.org");
-        registration.pwdInput.sendKeys("Autobots123!");
-        registration.pwdConfirmInput.sendKeys("Autobots123!");
+        Thread.sleep(500);
+        registration.emailInput.sendKeys("host@autobots.org");
+        Thread.sleep(500);
+        registration.pwdInput.sendKeys("Hosty123!");
+        registration.pwdConfirmInput.sendKeys("Hosty123!");
+        Thread.sleep(500);
         registration.hostBtn.click();
-        Thread.sleep(10000);
+        Thread.sleep(500);
+        registration.signUp.click();
+        Thread.sleep(5000);
+        registration.logOut.click();
     }
 }
